@@ -1,5 +1,7 @@
 import React from "react";
-import "./index.css";
+import "./index.css"
+import { Link } from "react-router-dom";
+
 
 const Home = () => {
   return (
@@ -18,8 +20,8 @@ const Home = () => {
         </span>
       </p>
 
-      <div>
-        <button className="explore-button">Start Exploring</button>
+      <div className="explore-button">
+        <Link to="/library" className="link">Start Exploring</Link>
       </div>
     </div>
   );

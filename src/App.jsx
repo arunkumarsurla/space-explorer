@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/About";
 import Apod from "./components/Apod";
-import Library from "./components/Library";
 import Sidebar from "./components/Sidebar";
 import { lazy, Suspense } from "react";
 import NotFound from "./components/NotFound";
 
 
 const Home = lazy(() => import("./components/Home"));
+const Library = lazy(() => import("./components/Library"))
 
 function App() {
   return (

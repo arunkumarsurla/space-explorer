@@ -38,7 +38,6 @@
   }
   a {
     color: var(--green);
-    text-decoration: underline;
   }
 }
 
@@ -54,6 +53,10 @@
   padding: 1.25rem 1.75rem;
   text-decoration: none;
   transition: all 0.2s linear;
+  text-decoration: none;
+  a{
+    text-decoration: none;
+  }
 }
 .explore-button:hover {
   box-shadow: 3px 3px 0 0 var(--green);
@@ -76,7 +79,6 @@
     }
     a {
       color: var(--green);
-      text-decoration: underline;
     }
   }
 }
