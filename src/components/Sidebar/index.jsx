@@ -5,7 +5,9 @@ import "./index.css";
 const Sidebar = () => {
   return (
     <div className="side-navbar">
-      <h1 className="logo">Space Explorer</h1>
+      <h1 className="logo">
+        Space Explorer <i className="fa-solid fa-rocket"></i>
+      </h1>
 
       <nav>
         <NavLink to="/" className="nav-link">
