@@ -20,9 +20,9 @@ const Home = () => {
         </span>
       </p>
 
-      <div className="explore-button">
-        <Link to="/library" className="link">Start Exploring</Link>
-      </div>
+     
+        <Link to="/library" className="link explore-button">Start Exploring</Link>
+      
     </div>
   );
 };

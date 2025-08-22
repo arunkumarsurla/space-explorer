@@ -1,65 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
+import { Link } from "react-router-dom";
 
-const Library = () => {
-  const keywords = [
-    "supernova",
-    "galaxy",
-    "black hole",
-    "nebula",
-    "earth",
-    "moon",
-    "planet",
-    "mars",
-    "jupiter",
-    "saturn",
-    "venus",
-    "mercury",
-    "uranus",
-    "neptune",
-    "pluto",
-    "asteroid",
-    "comet",
-    "meteor",
-    "star",
-    "constellation",
-    "milky way",
-    "cosmos",
-    "universe",
-    "orbit",
-    "solar system",
-    "telescope",
-    "astronaut",
-    "space station",
-    "rocket",
-    "eclipse",
-    "dwarf planet",
-    "exoplanet",
-    "pulsar",
-    "quasar",
-    "dark matter",
-    "dark energy",
-    "event horizon",
-    "gravitational waves",
-    "cosmic rays",
-    "andromeda",
-    "spiral galaxy",
-    "elliptical galaxy",
-  ];
 
-  const randomNumber = Math.floor(Math.random() * keywords.length)
-  const randomWord  = keywords[randomNumber]
-
-  
+const Library = () => {  
   const [data, setData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(randomWord);
-  const [query, setQuery] = useState(randomWord);
+  const localTerm = localStorage.getItem("searchItem") || "supernova"
+  const [searchTerm, setSearchTerm] = useState(localTerm);
+  const [query, setQuery] = useState(searchTerm);
   const [loading, setLoading] = useState(false);
 
   const API_URL = `https://images-api.nasa.gov/search?q=${query}`;
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
+    localStorage.setItem("searchItem",e.target.value)
   };
 
   const handleSearch = () => {
@@ -114,9 +69,10 @@ const Library = () => {
             <p>Loading...</p>
           </div>
         ) : (
-          <div  className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div  className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {data.length > 0 ? (
               data.map((item, index) => (
+                <Link to={`/details/${item.data[0].nasa_id}`}>
                 <div key={index} className="card">
                   {item.links?.[0]?.href && (
                     <img
@@ -126,9 +82,10 @@ const Library = () => {
                   )}
                   <h3>{item.data?.[0]?.title}</h3>
                 </div>
+                </Link>
               ))
             ) : (
-              <p>We couldn’t find any results for that search.</p>
+              <p style={{color:"red"}}>We couldn’t find any results for that search.</p>
             )}
           </div>
         )}
